@@ -18,7 +18,7 @@ from django.urls import path
 from reservation_app import views
 
 urlpatterns = [
-    path('home/', views.home, name='home'),
+    path('', views.home, name='home'),
     path('room/new/', views.AddRoom.as_view(), name='add_room'),
     path('room/available/', views.ViewAvailableRooms.as_view(), name='available_rooms'),
     path('room/delete/<int:id>/', views.DeleteRoom.as_view(), name='delete_room'),
