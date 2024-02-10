@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{%  block content %}
+   <p></p>
+<form method="post">
+    {% csrf_token %}
+    <label for="name">Room name</label>
+    <input type="text" name="name" value="{{ room.name }}">
+    <label for="seats">Seats</label>
+    <input type="number" name="seats" value="{{ room.seats }}">
+    <label for="projector">Projector</label>        
+    <input type="checkbox" value="True" {% if room.projector %} checked {% endif %}  name="projector"> Yes
+    <input type="submit">
+</form>
+    <p></p>
+    {{ message }}
+{% endblock %}
+
+

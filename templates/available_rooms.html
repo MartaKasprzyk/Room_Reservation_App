@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{%  block content %}
+    <style>
+      .center {  
+      margin-left: auto;
+      margin-right: auto;
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #4d6c55;    
+      padding: 16px;
+      } 
+      .row:hover{
+      background-color: #a4dabb;    
+      }
+      .cell{
+      padding: 10px;
+      text-align: center;    
+      }
+      button.options {
+      background-color: #709a7b;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      text-align: center;
+      margin: 4px 2px;
+      transition: 0.3s;
+      display: inline-block;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    button.options:hover {background-color: #8a8a8a;}
+    </style>
+    <p></p>
+    {{ message }}
+    <p></p>
+    <table class="center">
+    <tr>
+        <th>lp</th>
+        <th>Room name</th>
+        <th>Seats</th>
+        <th>Projector</th>
+        <th>Availability</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+         {% for room in rooms %}
+             <tr class="row">
+             <td class="cell" style="text-align: left">{{ forloop.counter }}</td>
+             <td class="cell"><a href="/room/view_room/{{ room.id }}">{{ room.name }}</a></td>
+             <td class="cell">{{ room.seats }}</td>
+             {% if room.projector %}   
+                  <td class="cell">Available</td>
+              {% else %}
+                  <td class="cell">Not available</td>
+              {% endif %}
+             {% if room.get_reservations %}
+                  <td class="cell">Reserved for some dates</td>
+             {% else %}
+                  <td class="cell">No reservations</td>
+             {% endif %}
+             <td><a href="/room/modify/{{ room.id }}">
+               <button class="options" type="button" name="edit">edit</button></a></td>
+             <td><a href="/room/delete/{{ room.id }}">
+               <button class="options" type="button" name="delete">delete</button></a></td>  
+             <td><a href="/room/reserve/{{ room.id }}">
+               <button class="options" type="button" name="reserve">reserve</button></a></td> 
+             </tr>
+        {% endfor %}
+    </table>   
+    
+
+{% endblock %}

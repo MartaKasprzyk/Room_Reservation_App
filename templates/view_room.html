@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{%  block content %}
+<style>
+    button.options {
+      background-color: #709a7b;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      text-align: center;
+      margin: 4px 2px;
+      transition: 0.3s;
+      display: inline-block;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    button.options:hover {background-color: #8a8a8a;}
+    .center {  
+      margin-left: auto;
+      margin-right: auto;
+      border-collapse: collapse;
+      width: 50%;
+      padding: 16px;
+      } 
+    .left {  
+      margin-left: auto;
+      margin-right: auto;
+      width: 40%;
+      padding: 16px;
+      } 
+</style>
+<table class="center">
+    <tr>
+        <th><b>Room name</b></th>
+        <th><b>Seats</b></th>
+        <th><b>Projector</b></th>
+    </tr>
+          <tr>
+           <td style="text-align: center">{{ room.name }}</td>
+           <td style="text-align: center">{{ room.seats }}</td>
+              {% if room.projector %}   
+                  <td style="text-align: center">Available</td>
+              {% else %}
+                  <td style="text-align: center">Not available</td>
+              {% endif %}
+           <td><a href="/room/modify/{{ room.id }}">
+               <button class="options" type="button" name="edit">edit</button></a></td>
+           <td><a href="/room/delete/{{ room.id }}">
+               <button class="options" type="button" name="delete">delete</button></a></td>  
+           <td><a href="/room/reserve/{{ room.id }}">
+               <button class="options" type="button" name="reserve">reserve</button></a></td>    
+           </tr>              
+    </table>   
+    <p></p><p></p>
+    <table class="left">
+    <tr>
+        <th><b>Room reservation date</b></th>
+        <th><b>Comments</b></th>
+    </tr>
+        {% for reservation in room.get_reservations %} 
+        <tr>
+           <td style="text-align: center">{{ reservation.date }}</td>
+           <td style="text-align: center">{{ reservation.comment }}</td>
+           </tr>   
+        {% endfor %} 
+    </table>
+    
+{% endblock %}
+
+

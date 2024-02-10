@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{%  block content %}
+   <p></p>
+<form method="post">
+    {% csrf_token %}
+    <label for="name">Room name</label>
+    <input type="text" name="name" placeholder="name"><br>
+    <p></p>
+    <label for="seats">Seats</label>
+    <input type="number" name="seats" placeholder="seats"><br>
+    <p></p>
+    <label for="projector">Projector</label>        
+    <input type="checkbox" value="True" name="projector"> Yes<br>
+    <p></p>
+    <input type="submit">
+</form>
+    <p></p>
+    {{ message }}
+{% endblock %}

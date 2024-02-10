@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+    div.page-container {
+    position: relative;    
+    min-height: 100vh;   
+    }   
+    
+    div.content-wrap{
+    padding-bottom: 2.5rem;     
+    }
+    
+    ul.navbar {        
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #4d6c55;
+      display: flex; 
+      justify-content: center;  
+    }
+
+    li.navbar {
+      float: left; 
+      text-align: center;
+      font-family: Verdana, sans-serif;  
+    }
+
+    li.navbar a {
+      display: flex;
+      justify-content: center;  
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li.navbar a:hover {
+      background-color: #5e5b5b;
+    }  
+    
+    div {     
+    text-align: center;
+    font-family: Verdana, sans-serif;        
+    }  
+            
+    footer {
+    {#display: block;    #}
+    font-family: Verdana, sans-serif;
+    text-align: center;
+    width: 100%;
+    position:absolute;   
+    bottom: 0;
+    height: 2.5rem;     
+    }       
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="content-wrap">
+             <ul class="navbar">
+                <li class="navbar"><a href="{%  url 'home' %}">Home</a> </li>
+                <li class="navbar"><a href="{%  url 'add_room' %}">Add Room</a> </li>
+                <li class="navbar"><a href="{%  url 'available_rooms' %}">All Rooms</a> </li>
+                <li class="navbar"><a href="{%  url 'search_room' %}">Search</a> </li>  
+            </ul>
+            <p></p>
+            {% block content %}
+            Welcome to the simple reservation webapp!<br><br>
+            Check out rooms details and add, modify/delete or reserve a room.<br><br>
+            Search for available rooms with features of your choice.
+            {% endblock %}
+            <p></p>
+        </div>
+        <footer> *** 2024 made by MEK *** </footer>               
+    </div>
+</body>
+</html>
